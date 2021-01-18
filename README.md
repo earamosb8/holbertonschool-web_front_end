@@ -1,0 +1,1 @@
+# this repository contains all Directories from Web Stack specialization. 
