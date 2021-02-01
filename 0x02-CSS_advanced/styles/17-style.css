@@ -49,7 +49,22 @@ a:active {
 
 .section-header{
     text-align: var(--section-header-align);
+    padding: var(--section-header-padding);
 }
+
+.section-body {
+    padding: var(--section-body-padding);
+}
+
+.section-footer{
+    padding: var(--section-footer-padding);
+    text-align: var(--section-footer-align);
+}
+
+.footer{
+    padding: var(--footer-padding);
+}
+
 .section-tagline{
     color: var(--color-primary);
     font-family: var(--font-family-title);
