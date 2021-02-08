@@ -1,8 +1,7 @@
-/* Write a Sass file that assigns the text 
-color #3D3D3D to the HTML tags body and p */
-$base-color: #3D3D3D;
+/* Write a Sass file that assigns the text color #3D3D3D to the HTML tags body and p */
+$text-color: #3D3D3D;
 body {
-    color: $base-color; }
+    color: $text-color; }
   
   p {
-    color: $base-color; }
+    color: $text-color; }
