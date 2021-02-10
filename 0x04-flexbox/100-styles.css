@@ -568,11 +568,6 @@ ul.row {
     width: 100%;
 }
 
-.post-aside{
-    order: -1;
-    min-width: 20%;
-}
-
 .post-content p:first-child {
     font-size: var(--font-size-x-large);
 }
@@ -583,6 +578,11 @@ ul.row {
     font-size: var(--font-size-small);
     color: var(--color-grey);
     text-align: center;
+}
+
+.post-aside{
+    order: -1;
+    min-width: 20%;
 }
 
 .post img {
