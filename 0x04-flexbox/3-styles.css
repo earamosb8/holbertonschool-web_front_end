@@ -15,7 +15,7 @@
 /* Variables
    ============================= */
 
-:root {
+   :root {
     --color-primary: #D73953;
     --color-black:  #090909;
     --color-white: #ffffff;
@@ -371,27 +371,28 @@ ul.row {
     padding: 10rem 40rem 2rem 0;
 }
 
-  /* Section Latest news ============================= */
+/* Section Latest news ============================= */
 .section-latest-news .row {
     flex-direction: row-reverse;
 }
-  
+ 
+/* Section SERVICES 
+    ============================= */
 
-  /* Section SERVICES ============================= */
 .section-services .row{
     flex-wrap: wrap;
 }
 
-  /*** 4. CARD ***/
+/*** 4. CARD ***/
   
-  /* Card (all styles)
+/* Card (all styles)
       ============================= */
   
 .card-category {
     color: var(--color-primary);
 }
   
-  /* Card WORK
+/* Card WORK
       ============================= */
   
 .card-work .card-outer {
