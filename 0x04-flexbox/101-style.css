@@ -11,22 +11,27 @@
     
 }
 
-.box1{
-    background-color: black; 
+.box1, .box5{
     flex: 0.5;
     font-size: 0.25em;
     margin-top: 2.2em; 
     height: 2.8em;
     line-height: 2.8;
 }
+.box1{
+    background-color: black; 
+}
 
-.box2{
-    background-color: yellow;
+.box2, .box4{
     flex: 1;
     font-size: 0.5em;
     margin-top: 0.7em; 
     height: 2em;
     line-height: 2em;
+}
+
+.box2{
+    background-color: yellow;
 }
 
 .box3{
@@ -38,18 +43,8 @@
 
 .box4{
     background-color: green;
-    flex: 1; 
-    font-size: 0.5em;
-    margin-top: 0.7em; 
-    height: 2em;
-    line-height: 2em;
 }
 
 .box5{
     background-color: blue;
-    flex: 0.5;
-    font-size: 0.25em;
-    margin-top: 2.2em; 
-    height: 2.8em;
-    line-height: 2.8em;
 }
