@@ -1,20 +1,27 @@
+body{
+    display: flex;
+    justify-content: center;
+}
+
 .container{
     display: flex;
-    margin: auto;
-    margin-top: 30px;
-    justify-content: center;
     width: 80%;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
     line-height: 180px;
     font-size: 125px;
     color: white;
-    
+}
+
+.box{
+    display: flex ;
+    align-items: center;
+    justify-content: center;
 }
 
 .box1, .box5{
     flex: 0.5;
     font-size: 0.25em;
-    margin-top: 2.2em; 
     height: 2.8em;
     line-height: 2.8;
 }
@@ -25,7 +32,6 @@
 .box2, .box4{
     flex: 1;
     font-size: 0.5em;
-    margin-top: 0.7em; 
     height: 2em;
     line-height: 2em;
 }
