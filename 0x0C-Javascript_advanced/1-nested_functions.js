@@ -1,3 +1,5 @@
+//Create a variable named globalVariable with value Welcome
+
 let globalVariable = 'Welcome';
 function outer(){
     alert(globalVariable);
