@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>0-index.html</title>
+</head>
+<body>
+    <h1 style="font-size: 3rem; ">Login to website</h1>
+    <input type="text" placeholder="First Name" style="height: 2rem; font-size: large;" id="firstname">
+    <input type="text" placeholder="Email" style="height: 2rem; font-size: large;" id="email">
+    <button id="logmein" style="background-color: white; border-radius: 7px; font-size: large; width: 125px; height: 2rem;" >Log me in</button>
+    <h1 style="font-size: 3rem; ">Cookies</h1>
+    <button style="background-color: white; border-radius: 7px; font-size: large; width: 180px; height: 2rem;" id="showcookies">Show the cookies</button>
+    <script>
+        document.getElementById('logmein').addEventListener("click", function setCookies(){
+            let firstname = document.getElementById('firstname').value;
+            let email = document.getElementById('email').value;
+            document.getElementById('firstname').value = " ";
+            document.getElementById('email').value = " ";
+            document.cookie = `firstname=${firstname}; expires=Thu, 16 Apr 2021 12:00:00 UTC`;
+            document.cookie = `email=${email}; expires=Thu, 16 Apr 2021 12:00:00 UTC`;
+        })
+
+        document.getElementById('showcookies').addEventListener("click", function showCookies(){
+            const text = document.createElement("p");
+            let firstName = getCookie('firstname');
+            let email = getCookie('email');
+            text.innerHTML = "Email: "+email + " - Firstname: "+firstName;
+            document.querySelector("body").append(text);})
+
+        function getCookie(name){
+            let prefix = name + "=";
+            let search = document.cookie.indexOf(prefix);
+            if(search !== -1){
+                let cookieValue = document.cookie.replace(';', "");
+                cookieValue = cookieValue.replace('=', " ");
+                cookieValue = cookieValue.replace('=', " ");
+                let arrayCokkie = cookieValue.split(' ');
+                for(let i = 0; i<arrayCokkie.length; i++){
+                    if(name === arrayCokkie[i]){
+                        return arrayCokkie[i + 1];
+                    }
+                }
+            }
+            return "";
+        }
+    </script>
+</body>
+</html>
