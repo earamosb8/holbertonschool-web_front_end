@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+
+    <script type="application/javascript">
+
+        let availableItems = ["Shampoo", "Soap", "Sponge", "Water"];
+
+        function getCartFromStorage () {
+            if (sessionStorage.length > 0) {
+                return JSON.stringify(sessionStorage)
+            } else {
+                return {};
+            }
+        };
+
+        function addItemToCart (item) {
+            if (sessionStorage[item]) {
+                sessionStorage[item] = parseInt(sessionStorage[item]) + 1;
+            }
+            else {
+                sessionStorage[item] = 1;
+            }
+            displayCart();
+        };
+
+        function removeItemfromCart (item) {
+            let li = document.getElementById(item.id);
+            li.remove();
+            sessionStorage.removeItem(li.innerText.split(" ")[0]);
+            displayCart();
+        };
+
+        function clearCart () {
+            let div = document.getElementById("cart_section");
+            while (div.hasChildNodes()) {
+                div.removeChild(div.firstChild);
+            }
+            sessionStorage.clear();
+            updateCart();
+        };
+
+        function createStore() {
+            let h2 = document.createElement("h2");
+            h2.innerText = "Available products:";
+            document.body.appendChild(h2);
+            let ul = document.createElement("ul");
+            for (let i in availableItems) {
+                let item = document.createElement("li");
+                item.setAttribute("onclick", `addItemToCart("${availableItems[i]}")`);
+                item.style.cursor = "pointer";
+                item.innerText = availableItems[i];
+                ul.appendChild(item);
+            }
+            document.body.appendChild(ul);
+        }
+
+        function displayCart() {
+            let cart_section = document.getElementById("cart_section");
+            if (cart_section) {
+                while (cart_section.hasChildNodes()) {
+                    cart_section.removeChild(cart_section.firstChild);
+                }
+            } else {
+                let div = document.createElement("div");
+                let h2 = document.createElement("h2");
+
+                h2.innerText = "Your cart:";
+                document.body.appendChild(h2);
+                div.setAttribute("id", "cart_section");
+                document.body.appendChild(div);
+            }
+            updateCart();
+        }
+
+        function updateCart() {
+            let div = document.getElementById("cart_section");
+            let ks = Object.keys(sessionStorage);
+            if (ks.length > 0) {
+                let p = document.createElement("p");
+                p.innerText = "Clear my cart.";
+                p.setAttribute("onclick", "clearCart()");
+                p.style.cursor = "pointer";
+                div.appendChild(p);
+                for (let k in ks) {
+                    let name = ks[k];
+                    let quantity = sessionStorage[name];
+                    let item = document.createElement("li");
+                    let id = `ci_${name}`;
+                    item.innerText = `${name} x ${quantity} (remove)`;
+                    item.setAttribute("onclick", `removeItemfromCart(this)`);
+                    item.setAttribute("id", id);
+                    item.style.cursor = "pointer";
+                    div.appendChild(item);
+                }
+            } else {
+                let p = document.createElement("p");
+                p.innerText = "Your cart is empty";
+                div.appendChild(p);
+            }
+        }
+
+        if (typeof (sessionStorage) !== "undefined") {
+            createStore();
+            displayCart();
+        } else {
+            alert("Sorry, your browser does not support Web storage. Try again with a better one");
+        }
+
+    </script>
+</body>
+</html>
