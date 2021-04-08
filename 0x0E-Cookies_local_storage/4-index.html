@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+   
+    <title>4-index.html</title>
+</head>
+<body id="body">
+    <div>
+        <h1 style="font-size: 3rem; ">Login to website</h1>
+        <input type="text" placeholder="First Name" style="height: 2rem; font-size: large;" id="firstname">
+        <input type="text" placeholder="Email" style="height: 2rem; font-size: large;" id="email">
+        <button id="logmein" style="background-color: white; border-radius: 7px; font-size: large; width: 125px; height: 2rem;" >Log me in</button>
+    </div>
+    <script>
+        document.getElementById('logmein').addEventListener("click", function setCookies(){
+            let firstname = document.getElementById('firstname').value;
+            let email = document.getElementById('email').value;
+            if(firstname && email){
+                document.getElementById('firstname').value = " ";
+                document.getElementById('email').value = " ";
+                document.cookie = `firstname=${firstname}; expires=Thu, 16 Apr 2021 12:00:00 UTC`;
+                document.cookie = `email=${email}; expires=Thu, 16 Apr 2021 12:00:00 UTC`;
+                showWelcomeMessageOrForm()
+            }
+            
+        })
+
+        document.getElementById('showcookies').addEventListener("click", function showCookies(){
+            const text = document.createElement("p");
+            let firstName = Cookies.get('firstname');
+            let email = Cookies.get('email');
+            text.innerHTML = "Email: "+email + " - Firstname: "+firstName;
+            document.querySelector("body").append(text);})
+
+        function showForm() {
+        document.querySelector("div").style.display = "block";
+
+        let link = document.querySelector("a");
+        let title = document.querySelector("#welcome")
+        document.querySelector("#body").removeChild(title);
+        document.querySelector("#body").removeChild(link);
+        }
+
+    function hideForm() {
+      document.querySelector("div").style.display = "none";
+    }
+
+    function deleteCookiesAndShowForm() {
+        Cookies.remove("firstname");
+        Cookies.remove("email");
+        showForm();
+    }
+
+    function showWelcomeMessageOrForm() {
+        let firstname =  Cookies.get("firstname");
+        let email = Cookies.get("email");
+        if(firstname && email){
+            const welcome = document.createElement("h1");
+            welcome.style.display = "inline-block"
+            welcome.setAttribute("id", "welcome");
+            const link = document.createElement("a");
+            link.style.cssText = "font-weight: normal; font-style: italic; margin-left: 10px;";
+            link.addEventListener('click',deleteCookiesAndShowForm);
+            welcome.innerHTML = `Welcome ${firstname}`;
+            link.innerHTML = "(logout)";
+            document.querySelector("body").append(welcome);
+            document.querySelector("body").append(link);
+            hideForm();
+        }
+        
+    }
+   
+    </script>
+    
+</body>
+</html>
